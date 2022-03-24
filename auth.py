@@ -27,8 +27,8 @@ class Registrar:
         user = auth.create_user_with_email_and_password(email, password)
         print('localId: ',user['localId'])
         data ={
-            "name": name,
-            "phone": phone,
+            "GEEEEEEEEEEEEEET": name,  
+            "phone": phone, 
             "email": email
         }
         results = db.child("users").child(user['localId']).set(data)
