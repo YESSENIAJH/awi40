@@ -1,66 +1,127 @@
 <html>
     <head>
-        <title>Bienvenido</title>
+        <style>
+            body {
+          font-family: 'Overpass', sans-serif;
+          font-weight: normal;
+          font-size: 100%;
+          color: #1b262c;
+          
+          margin: 0;
+          background-image: url("https://www.delas.pt/files/2020/02/roupa-1200x675.jpg");
+      }
+      
+      #contenedor {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          
+          margin: 0;
+          padding: 0;
+          min-width: 100vw;
+          min-height: 100vh;
+          width: 100%;
+          height: 100%;
+      }
+      
+      #central {
+          max-width: 320px;
+          width: 100%;
+      }
+      
+      .titulo {
+          font-size: 250%;
+          color:#000000;
+          text-align: center;
+          margin-bottom: 20px;
+      }
+      
+      #registrar {
+          width: 100%;
+          padding: 50px 30px;
+          background-color: #9c9c9cb6;
+          
+          -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+          -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+          box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
+          
+          border-radius: 3px 3px 3px 3px;
+          -moz-border-radius: 3px 3px 3px 3px;
+          -webkit-border-radius: 3px 3px 3px 3px;
+          
+          box-sizing: border-box;
+      }
+      
+      #registrar input {
+          font-family: 'Overpass', sans-serif;
+          font-size: 110%;
+          color: #1b262c;
+          
+          display: block;
+          width: 100%;
+          height: 40px;
+          
+          margin-bottom: 10px;
+          padding: 5px 5px 5px 10px;
+          
+          box-sizing: border-box;
+          
+          border: none;
+          border-radius: 3px 3px 3px 3px;
+          -moz-border-radius: 3px 3px 3px 3px;
+          -webkit-border-radius: 3px 3px 3px 3px;
+      }
+      
+      #registrar input::placeholder {
+          font-family: 'Overpass', sans-serif;
+          color: #E4E4E4;
+      }
+      
+      #registrar button {
+          font-family: 'Overpass', sans-serif;
+          font-size: 110%;
+          color:#ffffff;
+          width: 100%;
+          height: 40px;
+          border: none;
+          
+          border-radius: 3px 3px 3px 3px;
+          -moz-border-radius: 3px 3px 3px 3px;
+          -webkit-border-radius: 3px 3px 3px 3px;
+          
+          background-color:#654fb4;
+          
+          margin-top: 10px;
+      }
+      
+      #registrar button:hover {
+          background-color:#7d3b91 ;
+          color:#bbe1fa;
+      }
+      
+            </style>
+<title>Registrar</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
-        <style> 
-        footer{
-            background-color: rgb(146, 178, 214);
-         }
-         .circulo{
-            background-color: rgb(238, 185, 235);
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            justify-content:center;
-            text-align:center;
-        }
-        .circulo{
-            background-color: #A4F6E2;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            justify-content:center;
-            text-align:center;
-        }
-        </style>  
     </head>
-
     <body>
-        <p>
-        <h1>PRODUCTOS</h1>
-        <h1>CLEW</h1>
-        <p>Contacto: 7751442398</p>
-        <a href="/">Logout</a>
-        <a href="/registrar">Sign it</a>
-    </p>
-        <img src="https://img.freepik.com/foto-gratis/conjunto-productos-limpieza-sobre-fondo-color-amarillo_93675-123055.jpg" width="1050" height="800">  
+        <div id="contenedor">
+            <div id="central">
+                <div id="registrar">
+                    <div class="titulo">
+                        Registrar
+                    </div>
+            <div class="wrapper">
+        <form method="POST" id="loginform">
+            <p>ingresa tus datos:</p>
+            <input type="name" name="name" id="name" placeholder="nombre"><br>
+            <input type="phone" name="phone" id="phone" placeholder="telefono"><br>
+            <input type="email" name="email" id="email" placeholder="email"><br>
+            <input type="password" name="password" id="password" placeholder="contraseña"><br>
+            <button type="submit" value="registrar" title="Ingresar">Registrar</button>
+        </form>
     </body>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-    <br>
-    <br>
-    <br>
-    <div class="circulo">
-        <div align="center">
-            <img src="/eracleww.png" width="77" height="77">
-        </div>
     </div>
-    <br>
-    <br>
-    <br>
-    <div class="circulo2">
-        <div align="center">
-            <img src="/eracleww.png" width="77" height="77">
-        </div>
 </div>
-    <br>
-    <br>
-    <br>
-    <br>
+</div>
 </html>
