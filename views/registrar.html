@@ -1,127 +1,45 @@
 <html>
     <head>
-        <style>
-            body {
-          font-family: 'Overpass', sans-serif;
-          font-weight: normal;
-          font-size: 100%;
-          color: #1b262c;
-          
-          margin: 0;
-          background-image: url("https://www.delas.pt/files/2020/02/roupa-1200x675.jpg");
-      }
-      
-      #contenedor {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          
-          margin: 0;
-          padding: 0;
-          min-width: 100vw;
-          min-height: 100vh;
-          width: 100%;
-          height: 100%;
-      }
-      
-      #central {
-          max-width: 320px;
-          width: 100%;
-      }
-      
-      .titulo {
-          font-size: 250%;
-          color:#000000;
-          text-align: center;
-          margin-bottom: 20px;
-      }
-      
-      #registrar {
-          width: 100%;
-          padding: 50px 30px;
-          background-color: #9c9c9cb6;
-          
-          -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-          -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-          box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-          
-          border-radius: 3px 3px 3px 3px;
-          -moz-border-radius: 3px 3px 3px 3px;
-          -webkit-border-radius: 3px 3px 3px 3px;
-          
-          box-sizing: border-box;
-      }
-      
-      #registrar input {
-          font-family: 'Overpass', sans-serif;
-          font-size: 110%;
-          color: #1b262c;
-          
-          display: block;
-          width: 100%;
-          height: 40px;
-          
-          margin-bottom: 10px;
-          padding: 5px 5px 5px 10px;
-          
-          box-sizing: border-box;
-          
-          border: none;
-          border-radius: 3px 3px 3px 3px;
-          -moz-border-radius: 3px 3px 3px 3px;
-          -webkit-border-radius: 3px 3px 3px 3px;
-      }
-      
-      #registrar input::placeholder {
-          font-family: 'Overpass', sans-serif;
-          color: #E4E4E4;
-      }
-      
-      #registrar button {
-          font-family: 'Overpass', sans-serif;
-          font-size: 110%;
-          color:#ffffff;
-          width: 100%;
-          height: 40px;
-          border: none;
-          
-          border-radius: 3px 3px 3px 3px;
-          -moz-border-radius: 3px 3px 3px 3px;
-          -webkit-border-radius: 3px 3px 3px 3px;
-          
-          background-color:#654fb4;
-          
-          margin-top: 10px;
-      }
-      
-      #registrar button:hover {
-          background-color:#7d3b91 ;
-          color:#bbe1fa;
-      }
-      
-            </style>
-<title>Registrar</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">
+        <style> 
+         .cuadrado{
+            background-color: rgb(238, 185, 235);
+            width: 300px;
+            height: 300px;
+            border-radius: 80%;
+            float:left; 
+            display:block;
+            text-align:center;
+        }
+        .cuadrado2{
+            background-color: #B9F1CF;
+            width: 300px;
+            height: 300px;
+            border-radius: 80%;
+            float:left; 
+            display:block;
+            text-align:center;
+        }
+        </style>  
     </head>
     <body>
-        <div id="contenedor">
-            <div id="central">
-                <div id="registrar">
-                    <div class="titulo">
-                        Registrar
-                    </div>
-            <div class="wrapper">
-        <form method="POST" id="loginform">
-            <p>ingresa tus datos:</p>
-            <input type="name" name="name" id="name" placeholder="nombre"><br>
-            <input type="phone" name="phone" id="phone" placeholder="telefono"><br>
-            <input type="email" name="email" id="email" placeholder="email"><br>
-            <input type="password" name="password" id="password" placeholder="contraseña"><br>
-            <button type="submit" value="registrar" title="Ingresar">Registrar</button>
-        </form>
+        <p>
+        <p>Contacto: 7751442398</p>
+        <a href="/">Logout</a>
+        <a href="/registrar">Sign it</a>
+    </p>
     </body>
+    <br>
+    <div class="burbujas" >
+    <br>
+    <br>
+    <div class="cuadrado" align="center">
     </div>
-</div>
+    <div class="cuadrado2" align="center">
+    </div>
+<br>
+<br>
+    <br>
 </div>
 </html>
