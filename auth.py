@@ -35,9 +35,12 @@ class Registrar:
             results = db.child("users").child(user['localId']).set(data)
             return web.seeother("/")
             print(results)
-            except Exception as error:
-                
-        return render.registrar()
+        except Exception as error:
+            formato = json.loads(error.args[1])
+            error = formato['error'] 
+            message = error['message']
+            print("Error Login.POST: {}".format(message)) # se imprime el message enviado por firebase
+            web.setcookie('localID', None, 3600)
     
 if __name__ == "__main__":
     app.run()
