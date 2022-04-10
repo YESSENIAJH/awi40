@@ -2,15 +2,15 @@ import web
 import pyrebase
 import firebase_config as token
 urls = (
-    '/registrar', 'Registrar'
+    '/', 'Elegir'
 )
 app = web.application(urls, globals())
 render = web.template.render('views')
 
 
-class Registrar:
+class Elegir:
     def GET(self):
-        return render.registrar()
+        return render.elegir()
 
     def POST(self):
         try:
