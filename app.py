@@ -126,13 +126,15 @@ class Elegir:
             phone = formulario.phone
             email = formulario.email
             password = formulario.password
+            tipo = formulario.tipo
             print(email,password)
             user = auth.create_user_with_email_and_password(email, password)
             local_id =(user['localId'])
             data ={
                 "nombre": name,  
                 "phone": phone, 
-                "email": email
+                "email": email,
+                "tipo":tipo
             }
             results = db.child("users").child(user['localId']).set(data)
             return web.seeother("/admin")
