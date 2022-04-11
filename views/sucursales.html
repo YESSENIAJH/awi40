@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+    <body>
+        <head>
+            <h1> agua de jamaica </h1>
+            <meta favicon="static/images/favicon.ico" alt="favicon">
+        </head>
+    <table>
+            <th>Sensor 1 </th>
+            <th>Sensor 2 </th>
+            <th>Sensor 3 </th>
+            <tr>
+                <td id="aaaaa">{{sensor1}}</td>
+                <td id="bbbbb">{{sensor2}}</td>
+                <td id="ccccc">{{sensor3}}</td>
+            </tr>
+    </table>
+    <script>
+         window.setInterval(function(){
+            var request = new XMLHttpRequest();
+            request.open('GET', 'https://awi4-4352f-default-rtdb.firebaseio.com/sensores.json');
+            request.onload = () => {
+                const response = request.responseText;
+                console.log(response);
+                const json = JSON.parse(response);
+                document.getElementById('aaaaa').innerHTML = json["aaaaa"].temperatura;
+                document.getElementById('bbbbb').innerHTML = json["bbbbb"].temperatura;
+                document.getElementById('ccccc').innerHTML = json["ccccc"].temperatura;
+            };
+            request.send();
+         },1000);
+    </script>
+    </body>
+</html>
