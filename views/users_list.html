@@ -1,0 +1,19 @@
+$def with(users)
+ <table class="table">
+	<thead>
+		<td>ID</td>
+		<td>Nombre</td>
+		<td>Email</td>
+		<td>Telefono</td>
+		<td>Nivel</td>
+	</thead>
+</table>
+	$for user in users:
+	<tr>
+		<td>$user.key()</td>
+		<td>$user.val().get("name")</td>
+		<td>$user.val().get("email")</td>
+		<td>$user.val().get("phone")</td>
+		<td>$user.val().get("level")</td>
+	</tr>
+</table>
