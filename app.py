@@ -1,7 +1,7 @@
 import web
 import pyrebase
 import firebase_config as token
-import json  #incluir libreria JSON
+import json  #incluir libreria JSON uwu
 firebase = pyrebase.initialize_app(token.firebaseConfig)
 auth = firebase.auth()
 
