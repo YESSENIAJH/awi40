@@ -160,6 +160,7 @@ class Login:
         try: # prueba el bloque de codigo 
             firebase = pyrebase.initialize_app(token.firebaseConfig) # se crea un objeto para conectarse con firebase
             auth = firebase.auth() # se crea un objeto para usar el servicios de autenticacion de firebase
+            db = firebase.database() #uso de base de datos
             formulario = web.input() # Se crea una variable formulario para recibir los datos del login.html
             email = formulario.email # se almacena el valor de email del formulario
             password = formulario.password # se almacena el valor de password del formulario
@@ -172,8 +173,7 @@ class Login:
             users = db.child("users").get()
             if users().get('tipo') == 'administrador': # Si localID es None se redirecciona a login.html
                 return render.administrador()  # se redirecciona al login.html
-            else: # si la cookies no esta vacia 
-                # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
+            else: # si la cookies no esta vacia b 
                 return render.operador() # renderiza bienvenida.html
             #return web.seeother("bienvenida") # Redirecciona a otra pagina web 
         except Exception as error:
