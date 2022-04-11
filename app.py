@@ -6,8 +6,8 @@ firebase = pyrebase.initialize_app(token.firebaseConfig)
 auth = firebase.auth()
 
 urls = (
-    '/bienvenida', 'Bienvenida', 
     '/', 'Login',
+    '/bienvenida', 'Bienvenida', 
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
     '/logout','Logout',
@@ -171,11 +171,13 @@ class Login:
             web.setcookie('localID', user['localId'], 3600) # se almacena en una cookie el localID
             print("localId: ",web.cookies().get('localID')) # se imprime la cookie para verificar que se almaceno correctamente
             users = db.child("users").get()
-            if users().get('tipo') == 'administrador': # Si localID es None se redirecciona a login.html
-                return render.administrador()  # se redirecciona al login.html
-            else: # si la cookies no esta vacia b 
-                return render.operador() # renderiza bienvenida.html
-            #return web.seeother("bienvenida") # Redirecciona a otra pagina web 
+            for user in users.each():
+                if user.key() == localID and user.val()['tipo'] == "administrador": # Si localID es None se redirecciona a login.html
+                    #return render.administrador() 
+                    return web.seeother("bienvenida")  # se redirecciona al login.html
+                else: # si la cookies no esta vacia 
+                    administrador = user.val()['tipo'] == "administrador"
+                    return render.login() # Redirecciona a otra pagina web 
         except Exception as error:
             formato = json.loads(error.args[1])
             error = formato['error'] 
