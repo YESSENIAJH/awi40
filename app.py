@@ -163,12 +163,19 @@ class Login:
             formulario = web.input() # Se crea una variable formulario para recibir los datos del login.html
             email = formulario.email # se almacena el valor de email del formulario
             password = formulario.password # se almacena el valor de password del formulario
+            tipo = formulario.tipo
             print(email,password) # se imprimen para verificar los valores recibidos
             user = auth.sign_in_with_email_and_password(email, password) #  autenticacion con firebase
             print(user["localId"]) # si los datos son correctos se recibe informacion del usuario imprime el localID
             web.setcookie('localID', user['localId'], 3600) # se almacena en una cookie el localID
             print("localId: ",web.cookies().get('localID')) # se imprime la cookie para verificar que se almaceno correctamente
-            return web.seeother("bienvenida") # Redirecciona a otra pagina web 
+            users = db.child("users").get()
+            if users().get('tipo') == 'administrador': # Si localID es None se redirecciona a login.html
+                return render.administrador()  # se redirecciona al login.html
+            else: # si la cookies no esta vacia 
+                # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
+                return render.operador() # renderiza bienvenida.html
+            #return web.seeother("bienvenida") # Redirecciona a otra pagina web 
         except Exception as error:
             formato = json.loads(error.args[1])
             error = formato['error'] 

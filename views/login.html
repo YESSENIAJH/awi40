@@ -101,6 +101,27 @@
     color:#fbf5fc;
 }
 
+
+#login select {
+          font-family: 'Overpass', sans-serif;
+          font-size: 108%;
+          color: #5f5a5d;
+          
+          display: block;
+          width: 70%;
+          height: 40px;
+          
+          margin-bottom: 10px;
+          padding: 5px 5px 5px 10px;
+          
+          box-sizing: border-box;
+          
+          border: none;
+          border-radius: 3px 3px 3px 3px;
+          -moz-border-radius: 3px 3px 3px 3px;
+          -webkit-border-radius: 3px 3px 3px 3px;
+      }
+
       </style>
         <title>Iniciar sesion</title>
         <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
@@ -120,6 +141,11 @@
         <form method="POST" id="loginform">
             <input type="email" name="email" id="email" placeholder="email"> <br>
             <input type="password" name="password" id="password" placeholder="contraseña"> <br>
+            <select name="tipo" id="tipo">
+                <option>Tipo</option>
+                <option id="administrador" value="administrador">Administrador</option>
+                <option id="operador" value="operador">Operador</option>
+            </select>
             <button type="submit" value="Validar" title="Ingresar">Entrar</button>
             <p><a href="/recuperar">Recuperar contraseña</a></p>
         </form>
