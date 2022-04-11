@@ -11,7 +11,8 @@ urls = (
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
     '/logout','Logout',
-    '/sucursales','Sucursales'
+    '/sucursales','Sucursales',
+    '/users_list','UsersList'
 )
 app = web.application(urls, globals())
 render = web.template.render("views")
@@ -67,6 +68,16 @@ class Sucursales:
                 return render.sucursales() # renderiza bienvenida.html
         except Exception as error: # se atrapa algun error
             print("Error Sucursales.GET: {}".format(error)) # se imprime el error atrapado 
+
+class UsersList:
+    def GET(self): # se invoca al entrar a la ruta /bienvenida
+        try: # prueba el siguiente bloque de codigo
+            firebase = pyrebase.initialize_app(token.firebaseConfig) #coneccion con firebase
+            db = firebase.database() #uso de base de datos
+            users = db.child("users").get #obtiene la informacion
+            return render.users_list(users) # renderiza bienvenida.html
+        except Exception as error: # se atrapa algun error
+            print("Error UsersList.GET: {}".format(error)) # se imprime el error atrapado 
 
 class Login:
     def GET(self): # se invoca al entrar a la ruta /login
