@@ -11,6 +11,7 @@ urls = (
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
     '/logout','Logout',
+    '/admin','Admin',
     '/sucursales','Sucursales',
     '/users_list','UsersList'
 )
@@ -78,6 +79,18 @@ class UsersList:
             return render.users_list(users) # renderiza bienvenida.html
         except Exception as error: # se atrapa algun error
             print("Error UsersList.GET: {}".format(error)) # se imprime el error atrapado 
+
+class Admin:
+    def GET(self): # se invoca al entrar a la ruta 
+        try: # prueba el siguiente bloque de codigo
+            print("Admin.GET localID: ",web.cookies().get('localID')) # se imprime el valor de localID para verificarlos
+            if web.cookies().get('localID') == None: # Si localID es None se redirecciona a login.html
+                return render.login()  # se redirecciona al login.html
+            else: # si la cookies no esta vacia 
+                # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
+                return render.admin() # renderiza bienvenida.html
+        except Exception as error: # se atrapa algun error
+            print("Error Admin.GET: {}".format(error)) # se imprime el error atrapado 
 
 class Login:
     def GET(self): # se invoca al entrar a la ruta /login
