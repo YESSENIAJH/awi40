@@ -11,6 +11,7 @@ urls = (
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
     '/logout','Logout',
+    '/elegir','Elegir',
     '/admin','Admin',
     '/operador','Operador',
     '/sucursales','Sucursales',
@@ -31,17 +32,20 @@ class Bienvenida:
         except Exception as error: # se atrapa algun error
             print("Error Bienvenida.GET: {}".format(error)) # se imprime el error atrapado 
 
+
 class Recuperar:
-    def GET(self): # se invoca al entrar a la ruta 
-        try: # prueba el siguiente bloque de codigo
-            print("Recuperar.GET localID: ",web.cookies().get('localID')) # se imprime el valor de localID para verificarlos
-            if web.cookies().get('localID') == None: # Si localID es None se redirecciona a login.html
-                return render.login()  # se redirecciona al login.html
-            else: # si la cookies no esta vacia 
-                # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
-                return render.recuperar() # renderiza bienvenida.html
-        except Exception as error: # se atrapa algun error
-            print("Error Recuperar.GET: {}".format(error)) # se imprime el error atrapado 
+    def GET(self):
+        return render.recuperar()
+
+    def POST(self):
+        firebase = pyrebase.initialize_app(token.firebaseConfig) # se crea un objeto para conectarse con firebase
+        auth = firebase.auth()
+        formulario = web.input()
+        email = formulario.email
+        print(email)
+        user = auth.send_password_reset_email(email)
+        print(user)
+        return render.recuperar() 
 
 class Registrar:
     def GET(self): # se invoca al entrar a la ruta /bienvenida
@@ -103,7 +107,42 @@ class Operador:
                 # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
                 return render.operador() # renderiza bienvenida.html
         except Exception as error: # se atrapa algun error
-            print("Error Operador.GET: {}".format(error)) # se imprime el error atrapado 
+            print("Error Operador.GET: {}".format(error)) # se imprime el error atrapado
+
+
+class Elegir:
+    def GET(self):
+        return render.elegir()
+
+    def POST(self):
+        try:
+            firebase = pyrebase.initialize_app(token.firebaseConfig)
+            auth = firebase.auth()
+            db = firebase.database()
+            formulario = web.input()
+            auth = firebase.auth()
+            db = firebase.database()
+            name = formulario.name
+            phone = formulario.phone
+            email = formulario.email
+            password = formulario.password
+            print(email,password)
+            user = auth.create_user_with_email_and_password(email, password)
+            local_id =(user['localId'])
+            data ={
+                "nombre": name,  
+                "phone": phone, 
+                "email": email
+            }
+            results = db.child("users").child(user['localId']).set(data)
+            return web.seeother("/admin")
+            print(results)
+        except Exception as error:
+            formato = json.loads(error.args[1])
+            error = formato['error'] 
+            message = error['message']
+            print("Error Login.POST: {}".format(message)) # se imprime el message enviado por firebase
+            web.setcookie('localID', None, 3600)
 
 class Login:
     def GET(self): # se invoca al entrar a la ruta /login

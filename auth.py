@@ -2,7 +2,7 @@ import web
 import pyrebase
 import firebase_config as token
 urls = (
-    '/', 'Elegir'
+    '/elegir', 'Elegir'
 )
 app = web.application(urls, globals())
 render = web.template.render('views')
@@ -24,7 +24,6 @@ class Elegir:
             phone = formulario.phone
             email = formulario.email
             password = formulario.password
-            tipo = formulario.tipo
             print(email,password)
             user = auth.create_user_with_email_and_password(email, password)
             local_id =(user['localId'])
