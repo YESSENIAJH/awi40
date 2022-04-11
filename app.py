@@ -6,8 +6,8 @@ firebase = pyrebase.initialize_app(token.firebaseConfig)
 auth = firebase.auth()
 
 urls = (
-    '/', 'Login',
     '/bienvenida', 'Bienvenida', 
+    '/', 'Login',
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
     '/logout','Logout',
