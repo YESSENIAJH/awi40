@@ -74,7 +74,7 @@ class UsersList:
         try: # prueba el siguiente bloque de codigo
             firebase = pyrebase.initialize_app(token.firebaseConfig) #coneccion con firebase
             db = firebase.database() #uso de base de datos
-            users = db.child("users").get #obtiene la informacion
+            users = db.child("users").get() #obtiene la informacion
             return render.users_list(users) # renderiza bienvenida.html
         except Exception as error: # se atrapa algun error
             print("Error UsersList.GET: {}".format(error)) # se imprime el error atrapado 
