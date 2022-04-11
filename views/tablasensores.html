@@ -233,8 +233,8 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2
                 </div>
                 <div class="pricing-table-features">
 					------------------------------------------------
-                    <p><strong>Temperatura: </strong> 21 º</p>
-                    <p><strong>Humedad: </strong> 18 º</p>
+                    <p><strong>Temperatura: </strong><td id="aaaaa">{{sensor1}}</td></p>
+                    <p><strong>Humedad: </strong> <td id="bbbbb">{{sensor2}}</td></p>
                 </div>
                 <div class="pricing-table-signup-tiny">
                   <p><a href="">Enfriar</a></p>
@@ -247,8 +247,8 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2
                     <h3>2</h3>
                 </div><div class="pricing-table-features">
 					------------------------------------------------
-                    <p><strong>Temperatura: </strong> 10 º</p>
-                    <p><strong>Humedad: </strong> 15 º</p>
+                    <p><strong>Temperatura: </strong><td id="aaaaa">{{sensor1}}</td></p>
+                    <p><strong>Humedad: </strong> <td id="bbbbb">{{sensor2}}</td></p>
                 </div>
                 <div class="pricing-table-signup-small">
                   <p><a href="">Enfriar</a></p>
@@ -260,6 +260,20 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2
             <div class="row-fluid">
 </div>
 </div>
-
+<script>
+    window.setInterval(function(){
+       var request = new XMLHttpRequest();
+       request.open('GET', 'https://awi4-4352f-default-rtdb.firebaseio.com/sensores.json');
+       request.onload = () => {
+           const response = request.responseText;
+           console.log(response);
+           const json = JSON.parse(response);
+           document.getElementById('aaaaa').innerHTML = json["aaaaa"].temperatura;
+           document.getElementById('bbbbb').innerHTML = json["bbbbb"].temperatura;
+           document.getElementById('ccccc').innerHTML = json["ccccc"].temperatura;
+       };
+       request.send();
+    },1000);
+</script>
     </body>
 </html>
