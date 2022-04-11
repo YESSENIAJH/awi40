@@ -10,7 +10,8 @@ urls = (
     '/bienvenida', 'Bienvenida', 
     '/recuperar', 'Recuperar',
     '/registrar', 'Registrar',
-    '/logout','Logout'
+    '/logout','Logout',
+    '/sucursales','Sucursales'
 )
 app = web.application(urls, globals())
 render = web.template.render("views")
@@ -54,6 +55,18 @@ class Registrar:
 class Logout:
         def GET(self): 
             return render.login()  
+
+class Sucursales:
+    def GET(self): # se invoca al entrar a la ruta 
+        try: # prueba el siguiente bloque de codigo
+            print("Sucursales.GET localID: ",web.cookies().get('localID')) # se imprime el valor de localID para verificarlos
+            if web.cookies().get('localID') == None: # Si localID es None se redirecciona a login.html
+                return render.login()  # se redirecciona al login.html
+            else: # si la cookies no esta vacia 
+                # Conectar con la base de datos de firebase para verificar que el usuario esta registrado, y obtener otros datos 
+                return render.sucursales() # renderiza bienvenida.html
+        except Exception as error: # se atrapa algun error
+            print("Error Sucursales.GET: {}".format(error)) # se imprime el error atrapado 
 
 class Login:
     def GET(self): # se invoca al entrar a la ruta /login
