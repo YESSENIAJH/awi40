@@ -78,10 +78,14 @@ class Sucursales:
 class UsersList:
     def GET(self): # se invoca al entrar a la ruta /bienvenida
         try: # prueba el siguiente bloque de codigo
-            firebase = pyrebase.initialize_app(token.firebaseConfig) #coneccion con firebase
-            db = firebase.database() #uso de base de datos
-            users = db.child("users").get() #obtiene la informacion
-            return render.users_list(users) # renderiza bienvenida.html
+            print("UsersList.GET localID: ",web.cookies().get('localID')) # se imprime el valor de localID para verificarlos
+            if web.cookies().get('localID') == None: # Si localID es None se redirecciona a login.html
+                return render.login()  # se redirecciona al login.html
+            else: # si la cookies no esta vacia 
+                firebase = pyrebase.initialize_app(token.firebaseConfig) #coneccion con firebase
+                db = firebase.database() #uso de base de datos
+                users = db.child("users").get() #obtiene la informacion
+                return render.users_list(users) # renderiza bienvenida.html
         except Exception as error: # se atrapa algun error
             print("Error UsersList.GET: {}".format(error)) # se imprime el error atrapado 
 
