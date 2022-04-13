@@ -281,9 +281,9 @@ data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAIklEQVQIW2
                console.log(response);
                const json = JSON.parse(response);
                document.getElementById('aaaaa').innerHTML = json["aaaaa"].temperatura;
-               document.getElementById('bbbbb').innerHTML = json["bbbbb"].temperatura;
+               document.getElementById('bbbbb').innerHTML = json["bbbbb"].humedad;
                document.getElementById('ccccc').innerHTML = json["ccccc"].temperatura;
-               document.getElementById('ddddd').innerHTML = json["ddddd"].temperatura;
+               document.getElementById('ddddd').innerHTML = json["ddddd"].humedad;
            };
            request.send();
         },1000);
